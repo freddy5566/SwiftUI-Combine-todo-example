@@ -53,6 +53,9 @@ struct SearchTaskRow: View {
 
       HStack {
         Text(task.description)
+          .font(.system(size: 14))
+          .lineLimit(0)
+          .frame(height: 50)
 
         Spacer()
 
