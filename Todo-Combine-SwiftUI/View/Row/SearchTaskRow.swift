@@ -24,24 +24,38 @@ struct SearchTaskRow: View {
       HStack {
         Text(task.name)
           .font(.largeTitle)
+          .background(Color.green)
 
         Spacer()
 
-        Button(action: {}) {
-          Text("Done")
-        }
-        .font(.body)
-        .frame(width: 100)
-        .background(Color.red)
-        .cornerRadius(10)
+        VStack(alignment: .leading) {
+          Button(action: {}) {
+            Text("Done")
+            }
+            .font(.body)
+            .frame(width: 100)
+            .background(Color.red)
+            .cornerRadius(10)
 
+          Spacer()
+
+          Button(action: {}) {
+            Text("Edit")
+          }
+          .font(.body)
+          .frame(width: 100)
+          .background(Color.red)
+          .cornerRadius(10)
+        }
+        .padding(.vertical)
 
       }
       .frame(height: 60)
-
+      .background(Color.purple)
 
       Text(task.description)
-        .frame(height: 40)
+        .background(Color.green)
+
     }
   }
 
