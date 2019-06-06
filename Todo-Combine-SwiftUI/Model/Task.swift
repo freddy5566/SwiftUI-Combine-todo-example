@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-struct Task: Identifiable, Hashable, Decodable {
+struct Task: Identifiable, Hashable, Decodable, Encodable {
 
   // MARK: - Properties
 

@@ -25,11 +25,15 @@ struct ContentView : View {
 
         }
         .navigationBarTitle(Text("Tasks"))
+        .navigationBarItems(trailing: Button(action: { self.viewModel.addTask() }, label: {
+          Text("New task")
+            .foregroundColor(Color.white)
+        }))
       }
       .colorScheme(.dark)
 
   }
-  
+
 }
 
 #if DEBUG
