@@ -22,7 +22,6 @@ struct ContentView : View {
         List(viewModel.tasks) { task in
           SearchTaskRow(task: task)
           }
-          .colorScheme(.dark)
 
         }
         .navigationBarTitle(Text("Tasks"))
@@ -31,7 +30,6 @@ struct ContentView : View {
 
   }
   
-
 }
 
 #if DEBUG

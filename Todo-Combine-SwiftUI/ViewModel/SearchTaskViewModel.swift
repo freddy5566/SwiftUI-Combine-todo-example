@@ -21,7 +21,7 @@ final class SearchTaskViewModel: BindableObject {
     description: "mockDescription",
     priority: "heigh",
     done: false,
-    date: ""
+    date: "1997 1 31"
     )] {
     didSet {
       didChange.send(self)

@@ -24,7 +24,6 @@ struct SearchTaskRow: View {
       HStack {
         Text(task.name)
           .font(.largeTitle)
-          .background(Color.green)
 
         Spacer()
 
@@ -34,7 +33,7 @@ struct SearchTaskRow: View {
             }
             .font(.body)
             .frame(width: 100)
-            .background(Color.red)
+            .background(Color.pink)
             .cornerRadius(10)
 
           Spacer()
@@ -44,17 +43,21 @@ struct SearchTaskRow: View {
           }
           .font(.body)
           .frame(width: 100)
-          .background(Color.red)
+          .background(Color.pink)
           .cornerRadius(10)
         }
         .padding(.vertical)
 
       }
       .frame(height: 60)
-      .background(Color.purple)
 
-      Text(task.description)
-        .background(Color.green)
+      HStack {
+        Text(task.description)
+
+        Spacer()
+
+        Text("created: " + task.date)
+      }
 
     }
   }
