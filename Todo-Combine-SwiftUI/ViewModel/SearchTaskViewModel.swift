@@ -45,16 +45,13 @@ final class SearchTaskViewModel: BindableObject {
     name == "" ? fetchSearchAllTask(by: request) : fetchSearchTask(by: request)
   }
 
-  func addTask() {
+  func addTask(with task: Task) {
     guard let url = URL(string: Constants.baseURL) else { return }
 
     var request = getURLRequest(by: url)
-    let newTask = Task(id: "ds", name: "name", description: "deda", priority: "low", done: false, date: "1997 01 31")
-    tasks.append(newTask)
-    let data = try? JSONEncoder().encode(newTask)
+    request.httpMethod = "POST"
+    guard let data = try? JSONEncoder().encode(task) else { return }
     request.httpBody = data
-
-    //print("post data \(data?.base64EncodedString())")
 
     postTask(by: request)
   }
@@ -98,12 +95,16 @@ extension SearchTaskViewModel {
   }
 
   private func postTask(by request: URLRequest) {
+    let assign = Subscribers.Assign(object: self, keyPath: \.tasks)
+    cancellable = assign
+
     URLSession.shared.send(request: request)
-//      .map { data, response) in
-//        #if DEBUG
-//        print("data \(data) response \(response)")
-//        #endif
-//      }
+      .map { $0.data }
+      .decode(type: Task.self, decoder: JSONDecoder())
+      .map { [$0].filter { !$0.done } }
+      .map { self.tasks + $0 }
+      .replaceError(with: [])
+      .receive(subscriber: assign)
   }
 
 }
