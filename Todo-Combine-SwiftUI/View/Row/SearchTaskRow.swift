@@ -13,13 +13,24 @@ struct SearchTaskRow: View {
   @State var task: Task
 
   var body: some View {
-    HStack {
-      Text("Task.....")
-        .font(Font.system(size: 18).bold())
-      Spacer()
-      }
-      .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
-      .frame(height: 60)
+    VStack(alignment: .leading) {
+
+      Text(task.priority)
+        .font(.callout)
+        .frame(width: 150, height: 30)
+        .background(Color.red)
+        .cornerRadius(10)
+
+      HStack {
+        Text(task.name)
+          .font(.largeTitle)
+        }
+        .frame(height: 60)
+
+
+      Text(task.description)
+        .frame(height: 40)
+    }
   }
 
 }

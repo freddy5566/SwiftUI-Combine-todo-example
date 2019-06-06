@@ -11,9 +11,16 @@ import Combine
 
 final class SearchTaskViewModel: BindableObject {
 
+  // MARK: - Properties
+
   var didChange = PassthroughSubject<SearchTaskViewModel, Never>()
 
-  private(set) var tasks = [Task]() {
+  private(set) var tasks = [Task(
+    id: "mockID",
+    name: "mockName",
+    description: "mockDescription",
+    priority: "height"
+    )] {
     didSet {
       didChange.send(self)
     }
@@ -23,9 +30,10 @@ final class SearchTaskViewModel: BindableObject {
     didSet { oldValue?.cancel() }
   }
 
-  func searchTask(by name: String) {
-    guard let url = URL(string: Constants.baseURL + "/name/\(name)") else { return }
+  // MARK: - Public Method
 
+  func searchTask(by name: String) {
+    guard let url = URL(string: Constants.baseURL + "/name/\(name)"), name != "" else { return }
 
     var request = URLRequest(url: url)
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -41,6 +49,4 @@ final class SearchTaskViewModel: BindableObject {
       .receive(subscriber: assign)
   }
 
-
 }
-

@@ -21,4 +21,3 @@ final class AnySubscription: Subscription {
     cancellable.cancel()
   }
 }
-

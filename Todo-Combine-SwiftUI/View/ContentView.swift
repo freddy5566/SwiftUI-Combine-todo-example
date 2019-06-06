@@ -21,12 +21,17 @@ struct ContentView : View {
 
         List(viewModel.tasks) { task in
           SearchTaskRow(task: task)
-        }
+          }
+          .colorScheme(.dark)
 
         }
         .navigationBarTitle(Text("Tasks"))
-    }
+      }
+      .colorScheme(.dark)
+
   }
+
+
 }
 
 #if DEBUG

@@ -34,7 +34,7 @@ struct SearchTaskBar: View {
         .padding([.leading, .trailing], 16)
       }
       .frame(height: 64)
-      .background(Color.yellow)
+      .background(Color.black)
   }
 
 
