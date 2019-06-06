@@ -11,9 +11,10 @@ import SwiftUI
 struct ContentView : View {
   @EnvironmentObject var viewModel: SearchTaskViewModel
   @State var text = ""
-
+  
   var body: some View {
     NavigationView {
+
       VStack {
         SearchTaskBar(text: $text) {
           self.viewModel.searchTask(by: self.$text.value)
@@ -21,19 +22,24 @@ struct ContentView : View {
 
         List(viewModel.tasks) { task in
           SearchTaskRow(task: task)
-          }
+        }
+
+        NavigationButton(destination: NewTaskView()) {
+          Text("new task")
+            .font(.title)
+            .foregroundColor(.white)
+        }
 
         }
         .navigationBarTitle(Text("Tasks"))
-        .navigationBarItems(trailing: Button(action: { self.viewModel.addTask() }, label: {
-          Text("New task")
-            .foregroundColor(Color.white)
-        }))
+
       }
       .colorScheme(.dark)
 
   }
-
+  
+  
+  
 }
 
 #if DEBUG

@@ -53,7 +53,7 @@ final class SearchTaskViewModel: BindableObject {
     let data = try? JSONEncoder().encode(newTask)
     request.httpBody = data
 
-    print("post data \(data?.base64EncodedString())")
+    //print("post data \(data?.base64EncodedString())")
 
     postTask(by: request)
   }
@@ -98,11 +98,11 @@ extension SearchTaskViewModel {
 
   private func postTask(by request: URLRequest) {
     URLSession.shared.send(request: request)
-      .map { (data, response) in
-        #if DEBUG
-        print("data \(data) response \(response)")
-        #endif
-      }
+//      .map { data, response) in
+//        #if DEBUG
+//        print("data \(data) response \(response)")
+//        #endif
+//      }
   }
 
 }
