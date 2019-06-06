@@ -37,4 +37,4 @@ the following is what I currently dont know how to implement, if you guys know h
 
 - [ ] delete task while tap `done` button
 - [ ] add animation
-# - [ ] add edit view
+- [ ] add edit view
