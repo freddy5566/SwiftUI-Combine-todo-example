@@ -24,7 +24,7 @@ struct ContentView : View {
           SearchTaskRow(task: task)
         }
 
-        NavigationButton(destination: NewTaskView()) {
+        NavigationButton(destination: NewTaskView().environmentObject(self.viewModel)) {
           Text("new task")
             .font(.title)
             .foregroundColor(.white)

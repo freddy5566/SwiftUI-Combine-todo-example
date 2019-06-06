@@ -9,9 +9,12 @@
 import SwiftUI
 
 struct NewTaskView: View {
+  @EnvironmentObject var viewModel: SearchTaskViewModel
 
   var body: some View {
-    Text("new task")
+    Button(action: { self.viewModel.addTask() }) {
+      Text("new")
+    }
   }
 
 

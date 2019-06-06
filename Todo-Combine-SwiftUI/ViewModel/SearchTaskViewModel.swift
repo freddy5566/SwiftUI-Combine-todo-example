@@ -15,13 +15,14 @@ final class SearchTaskViewModel: BindableObject {
 
   var didChange = PassthroughSubject<SearchTaskViewModel, Never>()
 
-  private(set) var tasks = [Task(
-    id: "mockID",
-    name: "mockName",
-    description: "mockDescription",
-    priority: "heigh",
-    done: false,
-    date: "1997 1 31"
+  private(set) var tasks = [
+    Task(
+      id: "mockID",
+      name: "mockName",
+      description: "mockDescription",
+      priority: "heigh",
+      done: false,
+      date: "1997 1 31"
     )] {
     didSet {
       didChange.send(self)
