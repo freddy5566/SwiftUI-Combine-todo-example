@@ -17,6 +17,7 @@ struct Task: Identifiable, Hashable, Decodable {
   var name: String
   var description: String
   var priority: String
+  var done: Bool
 
 }
 

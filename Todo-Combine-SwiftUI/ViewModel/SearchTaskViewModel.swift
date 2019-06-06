@@ -19,7 +19,8 @@ final class SearchTaskViewModel: BindableObject {
     id: "mockID",
     name: "mockName",
     description: "mockDescription",
-    priority: "height"
+    priority: "height",
+    done: false
     )] {
     didSet {
       didChange.send(self)
@@ -44,7 +45,7 @@ final class SearchTaskViewModel: BindableObject {
     URLSession.shared.send(request: request)
       .map { $0.data }
       .decode(type: Task.self, decoder: JSONDecoder())
-      .map { [$0] }
+      .map { [$0].filter { !$0.done } }
       .replaceError(with: [])
       .receive(subscriber: assign)
   }

@@ -24,8 +24,20 @@ struct SearchTaskRow: View {
       HStack {
         Text(task.name)
           .font(.largeTitle)
+
+        Spacer()
+
+        Button(action: {}) {
+          Text("Done")
         }
-        .frame(height: 60)
+        .font(.body)
+        .frame(width: 100)
+        .background(Color.red)
+        .cornerRadius(10)
+
+
+      }
+      .frame(height: 60)
 
 
       Text(task.description)
